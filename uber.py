@@ -5,7 +5,6 @@ import numpy as np
 DATE_TIME = 'date/time'
 DATA_URL = 'https://s3-us-west-2.amazonaws.com/streamlit-demo-data/uber-raw-data-sep14.csv.gz'
 
-@st.cache
 def load_data(nrows):
     """Load the Uber NYC pickup dataset for 9/14."""
     with st.spinner('Loading data...'):
@@ -37,7 +36,3 @@ st.write(data)
 # Display a histogram of the data.
 st.subheader('Usage By Minute at %d:00' % hour)
 st.bar_chart(np.histogram(data[DATE_TIME].dt.minute, bins=60, range=(0,60))[0])
-
-# Display a map of the data.
-st.subheader('Geo Data at %d:00' % hour)
-st.map(data)
