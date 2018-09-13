@@ -27,7 +27,7 @@ _This script demonstrates viewing and manipulating some Uber data using Streamli
 data = load_data(100001)
 
 # Filter the data by hour.
-hour = 18
+hour = 12
 data = data[data[DATE_TIME].dt.hour == hour]
 
 # Display the raw data.
@@ -37,3 +37,7 @@ st.write(data)
 # Display a histogram of the data.
 st.subheader('Usage By Minute at %d:00' % hour)
 st.bar_chart(np.histogram(data[DATE_TIME].dt.minute, bins=60, range=(0,60))[0])
+
+# Display the data with a map.
+st.subheader('Geo Data at %d:00' % hour)
+st.map(data)
